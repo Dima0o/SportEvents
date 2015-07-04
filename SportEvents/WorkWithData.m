@@ -13,6 +13,10 @@
 #define guestsCountXpathQueryString     @"//span[@class='s-right']"
 #define matchStartTime                  @"//td[@class='alLeft gray-text']"
 
+#define ownersNameEmptyXpathQueryString     @"//td[@class='owner-td']//div[@class='rel']"
+#define guestsNameEmptyXpathQueryString     @"//td[@class='guests-td']//div[@class='rel']"
+
+
 #import "WorkWithData.h"
 #import "TFHpple.h"
 
@@ -43,7 +47,7 @@
         else
         {
              NSString * value = [NSString new];
-             value = [[element firstChild] content];
+             value = [element content];
             [dict setValue:value forKey:name];
 
         }
@@ -84,7 +88,15 @@
         NSString * matchID = [NSString stringWithFormat:@"//tr[@data-match-id ='%@']",idOfMatch];
         
         NSArray * arrayOfOwnersNodes = [sportParser searchWithXPathQuery:[NSString stringWithFormat:@"%@%@",matchID,ownersNameXpathQueryString]];
+        
+        if ([arrayOfOwnersNodes count] == 0) {
+            arrayOfOwnersNodes = [sportParser searchWithXPathQuery:[NSString stringWithFormat:@"%@%@",matchID,ownersNameEmptyXpathQueryString]];
+        }
         NSArray * arrayOfGuestsNodes = [sportParser searchWithXPathQuery:[NSString stringWithFormat:@"%@%@",matchID,guestsNameXpathQueryString]];
+        
+        if ([arrayOfGuestsNodes count] == 0) {
+            arrayOfGuestsNodes = [sportParser searchWithXPathQuery:[NSString stringWithFormat:@"%@%@",matchID,guestsNameEmptyXpathQueryString]];
+        }
         NSArray * arrayOfOwnersCountNodes = [sportParser searchWithXPathQuery:[NSString stringWithFormat:@"%@%@",matchID,ownersCountXpathQueryString]];
         NSArray * arrayOFGuestsCountNodes = [sportParser searchWithXPathQuery:[NSString stringWithFormat:@"%@%@",matchID,guestsCountXpathQueryString]];
         NSArray * arrayOfStartTimeNodes = [sportParser searchWithXPathQuery:[NSString stringWithFormat:@"%@%@",matchID,matchStartTime]];
