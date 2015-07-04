@@ -10,8 +10,6 @@
 
 @interface WorkWithData : NSObject
 
-@property (nonatomic, strong) NSString * date;
-
--(NSMutableArray*)loadMatchDataWithDate;
+-(NSMutableArray*)loadMatchDataWithDate:(NSString *) date;
 
 @end

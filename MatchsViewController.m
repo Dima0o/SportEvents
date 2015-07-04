@@ -70,9 +70,7 @@
     
     NSString * date = [self getDateToday];
     
-    work.date = date;
-    
-    self.dataArray = [work loadMatchDataWithDate];
+    self.dataArray = [work loadMatchDataWithDate:date];
     
     [self.matchTable reloadData];
 }

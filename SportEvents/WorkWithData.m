@@ -6,35 +6,20 @@
 //  Copyright (c) 2015 Lavskiy Peter. All rights reserved.
 //
 
-#define matchId                             @"//tr[@data-match-id]"
-
-#define ownersNameXpathQueryString          @"//td[@class='owner-td']//a[@class='player']"
-#define guestsNameXpathQueryString          @"//td[@class='guests-td']//a[@class='player']"
-
-#define ownersNameEmptyXpathQueryString     @"//td[@class='owner-td']//div[@class='rel']"
-#define guestsNameEmptyXpathQueryString     @"//td[@class='guests-td']//div[@class='rel']"
-
-#define ownersCountXpathQueryString         @"//span[@class='s-left']"
-#define guestsCountXpathQueryString         @"//span[@class='s-right']"
-#define matchStartTime                      @"//td[@class='alLeft gray-text']"
-
+#define matchId                         @"//tr[@data-match-id]"
+#define ownersNameXpathQueryString      @"//td[@class='owner-td']//a[@class='player']"
+#define guestsNameXpathQueryString      @"//td[@class='guests-td']//a[@class='player']"
+#define ownersCountXpathQueryString     @"//span[@class='s-left']"
+#define guestsCountXpathQueryString     @"//span[@class='s-right']"
+#define matchStartTime                  @"//td[@class='alLeft gray-text']"
 
 #import "WorkWithData.h"
 #import "TFHpple.h"
 
-@interface WorkWithData ()
-
-@property (nonatomic, strong) NSMutableArray * arrayOfMatchesID;
-
-
-@end
-
 @implementation WorkWithData
 
 
-
-
--(void) makeArrayWith:(NSMutableDictionary*) dict andWithNodes:(NSArray*) nodes andWithDataName:(NSString*) name andMatchID:(NSString*) matchID{
+-(void) makeArrayWith:(NSMutableDictionary*) dict andWithNodes:(NSArray*) nodes andWithDataName:(NSString*) name{
     
     // пришлось ввести условие, чтобы выводить именно время, а не статус матча
     
@@ -66,29 +51,11 @@
     }
 }
 
--(void) checkNamesIfEmpty:(NSString*) matchID{
-    
-    NSString * stringURL = [NSString stringWithFormat:@"http://www.sports.ru/stat/football/center/all/%@.html",self.date];
-    
-    NSURL * dataURL = [NSURL URLWithString:stringURL];
-    
-    NSData * htmlData = [NSData dataWithContentsOfURL:dataURL];
-    
-    TFHpple * sportParser = [TFHpple hppleWithHTMLData:htmlData];
-        
-    NSArray * arrayOfOwnersNodes = [sportParser searchWithXPathQuery:[NSString stringWithFormat:@"%@%@",matchID,ownersNameEmptyXpathQueryString]];
-    
-    NSMutableDictionary * dictOfMatches = [NSMutableDictionary new];
-    
-    [self makeArrayWith:dictOfMatches andWithNodes:arrayOfOwnersNodes andWithDataName:@"ownersName" andMatchID:matchId];
-    
-}
-
--(NSMutableArray*)loadMatchDataWithDate{
+-(NSMutableArray*)loadMatchDataWithDate:(NSString *) date {
     
     // задаем адрес нашего ресурса
     
-    NSString * stringURL = [NSString stringWithFormat:@"http://www.sports.ru/stat/football/center/all/%@.html",self.date];
+    NSString * stringURL = [NSString stringWithFormat:@"http://www.sports.ru/stat/football/center/all/%@.html",date];
         
     NSURL * dataURL = [NSURL URLWithString:stringURL];
     
@@ -99,7 +66,7 @@
     
     NSMutableArray * arrayOfData = [NSMutableArray new];
     
-    self.arrayOfMatchesID = [NSMutableArray new];
+    NSMutableArray * arrayOfMatchesID = [NSMutableArray new];
     
     NSArray * arrayOfMatchIdNodes = [sportParser searchWithXPathQuery:matchId];
     
@@ -109,18 +76,14 @@
         
         value = [element objectForKey:@"data-match-id"]; // вытаскиваем ID каждого матча
         
-        [self.arrayOfMatchesID addObject:value]; // добавляем ID каждого матча в массив
+        [arrayOfMatchesID addObject:value]; // добавляем ID каждого матча в массив
     }
     
-    for (NSString * idOfMatch in self.arrayOfMatchesID)
+    for (NSString * idOfMatch in arrayOfMatchesID)
     {
         NSString * matchID = [NSString stringWithFormat:@"//tr[@data-match-id ='%@']",idOfMatch];
         
         NSArray * arrayOfOwnersNodes = [sportParser searchWithXPathQuery:[NSString stringWithFormat:@"%@%@",matchID,ownersNameXpathQueryString]];
-        
-        if ([arrayOfOwnersNodes count] == 0) {
-            arrayOfOwnersNodes = [sportParser searchWithXPathQuery:[NSString stringWithFormat:@"%@%@",matchID,ownersNameEmptyXpathQueryString]];
-        }
         NSArray * arrayOfGuestsNodes = [sportParser searchWithXPathQuery:[NSString stringWithFormat:@"%@%@",matchID,guestsNameXpathQueryString]];
         NSArray * arrayOfOwnersCountNodes = [sportParser searchWithXPathQuery:[NSString stringWithFormat:@"%@%@",matchID,ownersCountXpathQueryString]];
         NSArray * arrayOFGuestsCountNodes = [sportParser searchWithXPathQuery:[NSString stringWithFormat:@"%@%@",matchID,guestsCountXpathQueryString]];
@@ -128,11 +91,11 @@
         
         NSMutableDictionary * dictOfMatches = [NSMutableDictionary new];
         
-        [self makeArrayWith:dictOfMatches andWithNodes:arrayOfOwnersNodes andWithDataName:@"ownersName" andMatchID:matchId];
-        [self makeArrayWith:dictOfMatches andWithNodes:arrayOfGuestsNodes andWithDataName:@"guestsName" andMatchID:matchId];
-        [self makeArrayWith:dictOfMatches andWithNodes:arrayOfOwnersCountNodes andWithDataName:@"ownersCount" andMatchID:matchId];
-        [self makeArrayWith:dictOfMatches andWithNodes:arrayOFGuestsCountNodes andWithDataName:@"guestsCount" andMatchID:matchId];
-        [self makeArrayWith:dictOfMatches andWithNodes:arrayOfStartTimeNodes andWithDataName:@"startTime" andMatchID:matchId];
+        [self makeArrayWith:dictOfMatches andWithNodes:arrayOfOwnersNodes andWithDataName:@"ownersName"];
+        [self makeArrayWith:dictOfMatches andWithNodes:arrayOfGuestsNodes andWithDataName:@"guestsName"];
+        [self makeArrayWith:dictOfMatches andWithNodes:arrayOfOwnersCountNodes andWithDataName:@"ownersCount"];
+        [self makeArrayWith:dictOfMatches andWithNodes:arrayOFGuestsCountNodes andWithDataName:@"guestsCount"];
+        [self makeArrayWith:dictOfMatches andWithNodes:arrayOfStartTimeNodes andWithDataName:@"startTime"];
 
         [arrayOfData addObject:dictOfMatches];
     }
