@@ -37,6 +37,7 @@
 
 @implementation WorkWithData
 
+#pragma mark Load Matches
 
 -(NSMutableArray*) makeArrayWithNodes:(NSArray*) nodes andValue:(NSString*) value {
     
@@ -84,17 +85,6 @@
         }
 
         return arrayOfData;
-}
-
--(TFHpple*) makeTFHppleWithURL:(NSString*) url{
-    
-    NSURL * dataURL = [NSURL URLWithString:url];
-    
-    NSData * htmlData = [NSData dataWithContentsOfURL:dataURL];
-    
-    TFHpple * sportParser = [TFHpple hppleWithHTMLData:htmlData];
-    
-    return sportParser;
 }
 
 -(NSMutableArray*) yearFromUrl:(NSString*)url {
@@ -246,6 +236,8 @@
 
     return arrayOfData;
    }
+
+#pragma mark Load Leagues
 
 - (NSMutableArray*) loadLeagueWithDate:(NSString *) date{
     
