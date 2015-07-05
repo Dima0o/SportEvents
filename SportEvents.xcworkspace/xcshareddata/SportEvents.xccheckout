@@ -5,23 +5,23 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>3D507BFA-D904-4B53-8DAC-502AA6EFF04C</string>
+	<string>6F3A586B-D3CA-468D-BD58-F29580F05BDF</string>
 	<key>IDESourceControlProjectName</key>
 	<string>SportEvents</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>918F0DA6C98995E5952E2184F29E4A75BEBD1E00</key>
-		<string>https://github.com/peterjj91/SportEvents.git</string>
+		<string>https://github.com/Lavskiy/SportEvents.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>SportEvents.xcodeproj</string>
+	<string>SportEvents.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>918F0DA6C98995E5952E2184F29E4A75BEBD1E00</key>
-		<string>../..</string>
+		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/peterjj91/SportEvents.git</string>
+	<string>https://github.com/Lavskiy/SportEvents.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

@@ -1,0 +1,6 @@
+#include "Pods-SportEvents-SLExpandableTableView.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/SLExpandableTableView" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/SLExpandableTableView"
+OTHER_LDFLAGS = ${PODS_SPORTEVENTS_SLEXPANDABLETABLEVIEW_OTHER_LDFLAGS} -ObjC
+PODS_ROOT = ${SRCROOT}
+SKIP_INSTALL = YES
