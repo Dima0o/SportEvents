@@ -10,5 +10,6 @@
 
 @interface MatchsViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITableView *matchTable;
+@property (strong, nonatomic) NSString * urlLeagueStatistic;
 
 @end

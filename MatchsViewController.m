@@ -44,8 +44,7 @@
     
     cell.lblOwnerTeam.text = [[self.dataArray objectAtIndex:indexPath.row] objectForKey:@"ownersName"];
     cell.lblGuestTeam.text = [[self.dataArray objectAtIndex:indexPath.row] objectForKey:@"guestsName"];
-    cell.lblOwnerCount.text = [[self.dataArray objectAtIndex:indexPath.row] objectForKey:@"ownersCount"];
-    cell.lblGuestCount.text = [[self.dataArray objectAtIndex:indexPath.row] objectForKey:@"guestsCount"];
+    cell.lblOwnerCount.text = [[self.dataArray objectAtIndex:indexPath.row] objectForKey:@"Count"];
     cell.lblTimeShow.text = [[self.dataArray objectAtIndex:indexPath.row] objectForKey:@"startTime"];
     cell.lblStatus.text = [[self.dataArray objectAtIndex:indexPath.row] objectForKey:@"status"];
     
@@ -58,7 +57,9 @@
     
     NSDateFormatter * dateFormat = [NSDateFormatter new];
     
-    [dateFormat setDateFormat:@"yyyy/MM/dd"];
+    [dateFormat setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"RU"]];
+    
+    [dateFormat setDateFormat:@"d LLLL"];
     
     NSString * date = [dateFormat stringFromDate:dateToday];
         
@@ -73,7 +74,7 @@
     
     self.lblDate.text = date;
     
-    self.dataArray = [work loadMatchDataWithDate:date];
+    self.dataArray = [work loadMatchDataWithURL:self.urlLeagueStatistic andWithDate:date];
     
     [self.matchTable reloadData];
 }

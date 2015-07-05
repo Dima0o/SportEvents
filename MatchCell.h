@@ -15,7 +15,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *imgOnwerTeam;
 @property (strong, nonatomic) IBOutlet UIImageView *imgGuestTeam;
 @property (strong, nonatomic) IBOutlet UILabel *lblOwnerCount;
-@property (strong, nonatomic) IBOutlet UILabel *lblGuestCount;
 @property (strong, nonatomic) IBOutlet UILabel *lblStatus;
 
 

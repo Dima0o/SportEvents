@@ -10,6 +10,7 @@
 
 @interface WorkWithData : NSObject
 
--(NSMutableArray*)loadMatchDataWithDate:(NSString *) date;
+-(NSMutableArray*)loadMatchDataWithURL:(NSString*) url andWithDate:(NSString*) date;
+- (NSMutableArray*) loadLeagueWithDate:(NSString *) date;
 
 @end
