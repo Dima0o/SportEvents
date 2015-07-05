@@ -15,7 +15,6 @@
 		286D56781B454774001D8905 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 286D56771B454774001D8905 /* Images.xcassets */; };
 		286D567B1B454774001D8905 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 286D56791B454774001D8905 /* LaunchScreen.xib */; };
 		286D56871B454775001D8905 /* SportEventsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 286D56861B454775001D8905 /* SportEventsTests.m */; };
-		288F4C211B494B04009E17A6 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 288F4C201B494B04009E17A6 /* TestViewController.m */; };
 		2891155C1B45B8A5000F0954 /* MatchsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2891155B1B45B8A5000F0954 /* MatchsViewController.m */; };
 		289115621B45B8F5000F0954 /* MatchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 289115611B45B8F5000F0954 /* MatchCell.m */; };
 		2891156A1B45BA07000F0954 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 289115651B45BA07000F0954 /* TFHpple.m */; };
@@ -23,7 +22,6 @@
 		2891156C1B45BA07000F0954 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 289115691B45BA07000F0954 /* XPathQuery.m */; };
 		2891156E1B45BA23000F0954 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2891156D1B45BA23000F0954 /* libxml2.dylib */; };
 		289115751B46EA32000F0954 /* WorkWithData.m in Sources */ = {isa = PBXBuildFile; fileRef = 289115741B46EA32000F0954 /* WorkWithData.m */; };
-		F208D785D4B3DF64BB890690 /* libPods-SportEvents.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F0B6C752315E952562A74A4 /* libPods-SportEvents.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,8 +49,6 @@
 		286D56801B454775001D8905 /* SportEventsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SportEventsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		286D56851B454775001D8905 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		286D56861B454775001D8905 /* SportEventsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SportEventsTests.m; sourceTree = "<group>"; };
-		288F4C1F1B494B04009E17A6 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
-		288F4C201B494B04009E17A6 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		2891155A1B45B8A5000F0954 /* MatchsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchsViewController.h; sourceTree = "<group>"; };
 		2891155B1B45B8A5000F0954 /* MatchsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchsViewController.m; sourceTree = "<group>"; };
 		289115601B45B8F5000F0954 /* MatchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchCell.h; sourceTree = "<group>"; };
@@ -66,9 +62,6 @@
 		2891156D1B45BA23000F0954 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		289115731B46EA32000F0954 /* WorkWithData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkWithData.h; sourceTree = "<group>"; };
 		289115741B46EA32000F0954 /* WorkWithData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkWithData.m; sourceTree = "<group>"; };
-		3F0B6C752315E952562A74A4 /* libPods-SportEvents.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SportEvents.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		93630BB31D7DF3A0A746C81B /* Pods-SportEvents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportEvents.release.xcconfig"; path = "Pods/Target Support Files/Pods-SportEvents/Pods-SportEvents.release.xcconfig"; sourceTree = "<group>"; };
-		C8A97FF2FBFB5C118ED07FE9 /* Pods-SportEvents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportEvents.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SportEvents/Pods-SportEvents.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +70,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2891156E1B45BA23000F0954 /* libxml2.dylib in Frameworks */,
-				F208D785D4B3DF64BB890690 /* libPods-SportEvents.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,8 +90,6 @@
 				286D56661B454774001D8905 /* SportEvents */,
 				286D56831B454775001D8905 /* SportEventsTests */,
 				286D56651B454774001D8905 /* Products */,
-				549C3000CC700B0F4610ABDA /* Pods */,
-				F425122F4A8BC755B121B457 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -164,8 +154,6 @@
 				2891155B1B45B8A5000F0954 /* MatchsViewController.m */,
 				289115601B45B8F5000F0954 /* MatchCell.h */,
 				289115611B45B8F5000F0954 /* MatchCell.m */,
-				288F4C1F1B494B04009E17A6 /* TestViewController.h */,
-				288F4C201B494B04009E17A6 /* TestViewController.m */,
 			);
 			name = "Matchs Stats";
 			path = ..;
@@ -193,23 +181,6 @@
 			name = Data;
 			sourceTree = "<group>";
 		};
-		549C3000CC700B0F4610ABDA /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C8A97FF2FBFB5C118ED07FE9 /* Pods-SportEvents.debug.xcconfig */,
-				93630BB31D7DF3A0A746C81B /* Pods-SportEvents.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		F425122F4A8BC755B121B457 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3F0B6C752315E952562A74A4 /* libPods-SportEvents.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -217,11 +188,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 286D568A1B454775001D8905 /* Build configuration list for PBXNativeTarget "SportEvents" */;
 			buildPhases = (
-				0008299FE86FF55DD24551ED /* Check Pods Manifest.lock */,
 				286D56601B454774001D8905 /* Sources */,
 				286D56611B454774001D8905 /* Frameworks */,
 				286D56621B454774001D8905 /* Resources */,
-				40B165112CE9DF87C548B746 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -308,39 +277,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		0008299FE86FF55DD24551ED /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		40B165112CE9DF87C548B746 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SportEvents/Pods-SportEvents-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		286D56601B454774001D8905 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -353,7 +289,6 @@
 				286D56701B454774001D8905 /* SportEvents.xcdatamodeld in Sources */,
 				2891156C1B45BA07000F0954 /* XPathQuery.m in Sources */,
 				2891156A1B45BA07000F0954 /* TFHpple.m in Sources */,
-				288F4C211B494B04009E17A6 /* TestViewController.m in Sources */,
 				286D56731B454774001D8905 /* ViewController.m in Sources */,
 				286D566A1B454774001D8905 /* main.m in Sources */,
 				289115621B45B8F5000F0954 /* MatchCell.m in Sources */,
@@ -480,7 +415,6 @@
 		};
 		286D568B1B454775001D8905 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C8A97FF2FBFB5C118ED07FE9 /* Pods-SportEvents.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -500,7 +434,6 @@
 		};
 		286D568C1B454775001D8905 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 93630BB31D7DF3A0A746C81B /* Pods-SportEvents.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
