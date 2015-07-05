@@ -109,6 +109,22 @@
             </objects>
             <point key="canvasLocation" x="79" y="-482"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="pel-OF-XrI">
+            <objects>
+                <navigationController id="nqp-rT-WEi" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6E5-Zd-ckn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="tjy-4z-kot" kind="relationship" relationship="rootViewController" id="kd1-mY-fpy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aSL-BV-XWw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="62" y="-1134"/>
+        </scene>
         <!--Matchs View Controller-->
         <scene sceneID="aq1-l3-HI2">
             <objects>
@@ -200,6 +216,16 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D1f-8Z-uDv">
+                                        <rect key="frame" x="17" y="17" width="30" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnBack:" destination="jDU-16-abh" eventType="touchUpInside" id="mGZ-2A-seF"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -220,7 +246,7 @@
         <!--League View Controller-->
         <scene sceneID="Phe-I7-ggD">
             <objects>
-                <viewController id="tjy-4z-kot" customClass="LeagueViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="League" id="tjy-4z-kot" customClass="LeagueViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QUV-Zk-kdt"/>
                         <viewControllerLayoutGuide type="bottom" id="jn5-cm-9Wt"/>
@@ -264,6 +290,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Xq1-R6-dqJ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yAO-HZ-3KJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

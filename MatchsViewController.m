@@ -10,6 +10,7 @@
 #import "TFHpple.h"
 #import "MatchCell.h"
 #import "WorkWithData.h"
+#import "LeagueViewController.h"
 
 @interface MatchsViewController ()
 
@@ -44,41 +45,38 @@
     
     cell.lblOwnerTeam.text = [[self.dataArray objectAtIndex:indexPath.row] objectForKey:@"ownersName"];
     cell.lblGuestTeam.text = [[self.dataArray objectAtIndex:indexPath.row] objectForKey:@"guestsName"];
-    cell.lblOwnerCount.text = [[self.dataArray objectAtIndex:indexPath.row] objectForKey:@"Count"];
+    cell.lblOwnerCount.text = [[self.dataArray objectAtIndex:indexPath.row] objectForKey:@"score"];
     cell.lblTimeShow.text = [[self.dataArray objectAtIndex:indexPath.row] objectForKey:@"startTime"];
     cell.lblStatus.text = [[self.dataArray objectAtIndex:indexPath.row] objectForKey:@"status"];
     
     return cell;
 }
 
--(NSString*) getDateToday
+-(NSDate*) getDateToday
 {
     NSDate * dateToday = [NSDate date];
-    
-    NSDateFormatter * dateFormat = [NSDateFormatter new];
-    
-    [dateFormat setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"RU"]];
-    
-    [dateFormat setDateFormat:@"d LLLL"];
-    
-    NSString * date = [dateFormat stringFromDate:dateToday];
         
-    return date;
+    return dateToday;
 }
 
 -(void)loadMatchData {
     
     WorkWithData * work = [WorkWithData new];
     
-    NSString * date = [self getDateToday];
-    
-    self.lblDate.text = date;
+    NSDate * date = [self getDateToday];
     
     self.dataArray = [work loadMatchDataWithURL:self.urlLeagueStatistic andWithDate:date];
     
     [self.matchTable reloadData];
 }
 
+- (IBAction)btnBack:(id)sender {
+    
+    LeagueViewController * league = [self.storyboard instantiateViewControllerWithIdentifier:@"League"];
+    
+    [self presentViewController:league animated:YES completion:nil];
+    
+}
 
 
 
