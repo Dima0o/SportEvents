@@ -14,6 +14,7 @@
 @interface MatchsViewController ()
 
 @property (nonatomic , strong) NSArray * dataArray;
+@property (strong, nonatomic) IBOutlet UILabel *lblDate;
 
 
 @end
@@ -69,6 +70,8 @@
     WorkWithData * work = [WorkWithData new];
     
     NSString * date = [self getDateToday];
+    
+    self.lblDate.text = date;
     
     self.dataArray = [work loadMatchDataWithDate:date];
     
