@@ -29,6 +29,10 @@
     [super didReceiveMemoryWarning];
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 6;
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self.array count];
@@ -39,6 +43,46 @@
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     cell.textLabel.text = [self.array objectAtIndex:indexPath.row];
     return cell;
+}
+
+- (BOOL)tableView:(SLExpandableTableView *)tableView canExpandSection:(NSInteger)section
+{
+    if (section == 1) {
+        return NO;
+    }
+    else
+        return YES;
+}
+
+- (BOOL)tableView:(SLExpandableTableView *)tableView needsToDownloadDataForExpandableSection:(NSInteger)section
+{
+    return NO;
+}
+
+
+
+- (UITableViewCell<UIExpandingTableViewCell> *)tableView:(SLExpandableTableView *)tableView expandingCellForSection:(NSInteger)section
+{
+    UITableViewCell<UIExpandingTableViewCell> * cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    return cell;
+}
+
+- (void)tableView:(SLExpandableTableView *)tableView downloadDataForExpandableSection:(NSInteger)section
+{
+    [tableView expandSection:section animated:YES];
+    // download your data here
+    // call [tableView expandSection:section animated:YES]; if download was successful
+    // call [tableView cancelDownloadInSection:section]; if your download was NOT successful
+}
+
+- (void)tableView:(SLExpandableTableView *)tableView didExpandSection:(NSUInteger)section animated:(BOOL)animated
+{
+    NSLog(@"expand");
+}
+
+- (void)tableView:(SLExpandableTableView *)tableView didCollapseSection:(NSUInteger)section animated:(BOOL)animated
+{
+    //...
 }
 
 
