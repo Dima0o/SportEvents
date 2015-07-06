@@ -118,7 +118,13 @@
     
     for (int i = 0; i < [arrayOfOwners count]; i++) {
         
-        if ([[arrayOfTime objectAtIndex:i] containsString:dateString])
+        NSString * matchDate = [arrayOfTime objectAtIndex:i];
+        
+        if (!self.isTag) {
+            matchDate = [matchDate substringToIndex:[matchDate length]-1];
+        }
+        
+        if ([matchDate isEqualToString:dateString])
         {
             NSMutableDictionary * dictOfMathces = [NSMutableDictionary new];
             
