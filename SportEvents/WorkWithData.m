@@ -8,15 +8,12 @@
 //
 
 #define matchId                             @"//tr[@data-match-id]"
-#define ownersNameXpathQueryString          @"//td[@class='owner-td']//a[@class='player']"
-#define guestsNameXpathQueryString          @"//td[@class='guests-td']//a[@class='player']"
+#define ownersNameXpathQueryString          @"//td[@class='owner-td']//div[@class='rel']"
+#define guestsNameXpathQueryString          @"//td[@class='guests-td']//div[@class='rel']"
 #define scoreXpathQueryString               @"//td[@class='score-td']/a"
 
 #define matchStartTime                      @"//td[@class='alLeft gray-text']"
 #define matchTimeIfTag                      @"//td[@class='name-td alLeft']"
-
-#define ownersNameEmptyXpathQueryString     @"//td[@class='owner-td']//div[@class='rel']"
-#define guestsNameEmptyXpathQueryString     @"//td[@class='guests-td']//div[@class='rel']"
 
 #define leagueTitleXpathQueryString          @"//div[@class='light-gray-title  corners-3px']/a"
 #define leagueDrawnTitleXpathQueryString     @"//div[@class='light-gray-title drawn-title corners-3px']/a"
@@ -168,10 +165,14 @@
     NSMutableArray * arrayOfGuests = [NSMutableArray new];
     NSMutableArray * arrayOfTime = [NSMutableArray new];
     NSMutableArray * arrayOfScore = [NSMutableArray new];
+    
     NSArray * arrayOfTimeNodes = [NSArray new];
-
-    NSArray * arrayOfOwnersNodes = [sportParser searchWithXPathQuery:ownersNameXpathQueryString];
-    NSArray * arrayOfGuestsNodes = [sportParser searchWithXPathQuery:guestsNameXpathQueryString];
+    NSArray * arrayOfOwnersNodes = [NSArray new];
+    NSArray * arrayOfGuestsNodes = [NSArray new];
+    
+    arrayOfOwnersNodes = [sportParser searchWithXPathQuery:ownersNameXpathQueryString];
+    
+    arrayOfGuestsNodes = [sportParser searchWithXPathQuery:guestsNameXpathQueryString];
    
     if (self.isTag) {
         
