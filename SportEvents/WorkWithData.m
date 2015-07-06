@@ -19,7 +19,8 @@
 #define leagueDrawnTitleXpathQueryString     @"//div[@class='light-gray-title drawn-title corners-3px']/a"
 
 
-#define yearsXpathQueryString                @"//a[@class='option']"
+#define yearsXpathQueryStringIfTag           @"//a[@class='option']"
+#define yearsXpathQueryString                @"//select[@class='floatR']//option"
 
 #define matchURL                             @"http://www.sports.ru/stat/football/match/"
 
@@ -28,7 +29,7 @@
 
 @interface WorkWithData ()
 
-@property BOOL isTag;
+@property BOOL isTag; // условие определяющее какую страницу парсить calendar  или статистика страны
 
 @end
 
@@ -36,82 +37,6 @@
 
 #pragma mark Load Matches
 
--(NSMutableArray*) makeArrayWithNodes:(NSArray*) nodes andValue:(NSString*) value {
-    
-    NSMutableArray * arrayOfData = [NSMutableArray new];
-    
-    if ([value  isEqual: @"time"]){
-        
-        for (TFHppleElement *element in nodes) {
-            
-            if (self.isTag)
-            {
-                if ([nodes indexOfObject:element] != 0)
-                {
-                    NSString * value = [NSString new];
-                    value = [[element firstTextChild] content];
-                    
-                    [arrayOfData addObject:value];
-                    
-                }
-            }
-            else{
-                
-                if ([nodes indexOfObject:element]%2 == 0)
-                {
-                    NSString * value = [NSString new];
-                    value = [[element firstTextChild] content];
-                    
-                    [arrayOfData addObject:value];
-                    
-                }
-                
-            }
-            
-        }
-    }
-    else
-        {
-            for (TFHppleElement *element in nodes) {
-                
-                NSString * value = [NSString new];
-                value = [element content];
-                [arrayOfData addObject:value];
-                
-            }
-        }
-
-        return arrayOfData;
-}
-
--(NSMutableArray*) yearFromUrl:(NSString*)url {
-    
-    NSMutableArray * arrayOfURLS = [NSMutableArray new];
-    
-    NSURL * dataURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@calendar",url]];
-    
-    NSData * htmlData = [NSData dataWithContentsOfURL:dataURL];
-    
-    TFHpple * sportParser = [TFHpple hppleWithHTMLData:htmlData];
-    
-    NSArray * yearsArrayNodes = [sportParser searchWithXPathQuery:yearsXpathQueryString];
-    
-    for (TFHppleElement *element in yearsArrayNodes) {
-        
-        NSMutableDictionary * dictURLs = [NSMutableDictionary new];
-        
-        NSString * year = [[element firstTextChild] content];
-        
-        NSString * url = [element objectForKey:@"href"];
-        
-        [dictURLs setObject:year forKey:@"year"];
-        [dictURLs setObject:url forKey:@"url"];
-        
-        [arrayOfURLS addObject:dictURLs];
-        
-    }
-    return arrayOfURLS;
-}
 
 -(NSMutableArray*)loadMatchDataWithURL:(NSString*) url andWithDate:(NSDate*) date{
     
@@ -122,37 +47,7 @@
     NSString * stringURL = [NSString new];
     
     
-    if ([url containsString:@"tags"] || [url containsString:@"euro"] || [url containsString:@"international-friendlies"]
-        || [url containsString:@"club-friendlies"]) {
-        
-        NSDateFormatter * dateFormat = [NSDateFormatter new];
-        
-        NSArray * arrayOfYears = [self yearFromUrl:url];
-        
-        [dateFormat setDateFormat:@"M"];
-        
-        [dateFormat setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"RU"]]; ;
-        
-        NSString * monthURL = [dateFormat stringFromDate:date];
-        
-        [dateFormat setDateFormat:@"yyyy"];
-        
-        NSString * year = [dateFormat stringFromDate:date];
-        
-        for (NSDictionary * dictOfURLs in arrayOfYears) {
-            if ([[dictOfURLs objectForKey:@"year"] isEqualToString:year]) {
-                
-                stringURL = [NSString stringWithFormat:@"%@&m=%@",[dictOfURLs objectForKey:@"url"],monthURL];
-
-            }
-        }
-        
-        self.isTag = YES;
-    }
-    else
-    {
-        stringURL = [NSString stringWithFormat:@"http://www.sports.ru%@/",url];
-    }
+    stringURL = [self checkURL:url date:date];
     
     NSURL * dataURL = [NSURL URLWithString:stringURL];
     
@@ -230,7 +125,7 @@
             [dictOfMathces setObject:[arrayOfOwners objectAtIndex:i] forKey:@"ownersName"];
             [dictOfMathces setObject:[arrayOfGuests objectAtIndex:i] forKey:@"guestsName"];
             [dictOfMathces setObject:[arrayOfScore objectAtIndex:i] forKey:@"score"];
-            [dictOfMathces setObject:[arrayOfTime objectAtIndex:i]  forKey:@"asd"];
+            [dictOfMathces setObject:[arrayOfTime objectAtIndex:i]  forKey:@"time"];
             
             [arrayOfData addObject:dictOfMathces];
         }
@@ -282,6 +177,154 @@
         [array addObject:dictOfMatches];
     }
 
+}
+
+#pragma mark Support Methods
+
+-(NSMutableArray*) makeArrayWithNodes:(NSArray*) nodes andValue:(NSString*) value {
+    
+    NSMutableArray * arrayOfData = [NSMutableArray new];
+    
+    if ([value  isEqual: @"time"]){
+        
+        for (TFHppleElement *element in nodes) {
+            
+            if (self.isTag)
+            {
+                if ([nodes indexOfObject:element] != 0)
+                {
+                    NSString * value = [NSString new];
+                    value = [[element firstTextChild] content];
+                    
+                    [arrayOfData addObject:value];
+                    
+                }
+            }
+            else{
+                
+                if ([nodes indexOfObject:element]%2 == 0)
+                {
+                    NSString * value = [NSString new];
+                    value = [[element firstTextChild] content];
+                    
+                    [arrayOfData addObject:value];
+                    
+                }
+                
+            }
+            
+        }
+    }
+    else
+    {
+        for (TFHppleElement *element in nodes) {
+            
+            NSString * value = [NSString new];
+            value = [element content];
+            [arrayOfData addObject:value];
+            
+        }
+    }
+    
+    return arrayOfData;
+}
+
+-(NSMutableArray*) yearFromUrl:(NSString*)url {
+    
+    NSMutableArray * arrayOfURLS = [NSMutableArray new];
+    
+    NSURL * dataURL = [NSURL new];
+    
+    if (self.isTag) {
+        
+        dataURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@calendar",url]];
+        
+    }
+    else{
+        
+        dataURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.sports.ru%@/",url]];
+    }
+    
+    NSData * htmlData = [NSData dataWithContentsOfURL:dataURL];
+    
+    TFHpple * sportParser = [TFHpple hppleWithHTMLData:htmlData];
+    
+    NSArray * yearsArrayNodes = [NSArray new];
+    
+    if (self.isTag) {
+        yearsArrayNodes = [sportParser searchWithXPathQuery:yearsXpathQueryStringIfTag];
+    }
+    else
+        yearsArrayNodes = [sportParser searchWithXPathQuery:yearsXpathQueryString];
+    
+    for (TFHppleElement *element in yearsArrayNodes) {
+        
+        NSMutableDictionary * dictURLs = [NSMutableDictionary new];
+        
+        NSString * year = [[element firstTextChild] content];
+        
+        NSString * url = [element objectForKey:@"value"];
+        
+        [dictURLs setObject:year forKey:@"year"];
+        [dictURLs setObject:url forKey:@"yearID"];
+        
+        [arrayOfURLS addObject:dictURLs];
+        
+    }
+    return arrayOfURLS;
+}
+
+-(NSString*) getYearFromDate:(NSDate*) date
+{
+    NSDateFormatter * dateFormat = [NSDateFormatter new];
+    
+    [dateFormat setDateFormat:@"yyyy"];
+    
+    NSString * year = [dateFormat stringFromDate:date];
+    
+    return year;
+}
+
+- (NSString *)checkURL:(NSString *)url date:(NSDate *)date {
+    NSString *stringURL;
+    if ([url containsString:@"tags"] || [url containsString:@"euro"] || [url containsString:@"international-friendlies"]
+        || [url containsString:@"club-friendlies"]) {
+        
+        self.isTag = YES;
+        
+        NSDateFormatter * dateFormat = [NSDateFormatter new];
+        
+        NSArray * arrayOfYears = [self yearFromUrl:url];
+        
+        [dateFormat setDateFormat:@"M"];
+        
+        [dateFormat setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"RU"]]; ;
+        
+        NSString * monthURL = [dateFormat stringFromDate:date];
+        
+        NSString * year = [self getYearFromDate:date];
+        
+        for (NSDictionary * dictOfURLs in arrayOfYears) {
+            if ([[dictOfURLs objectForKey:@"year"] containsString:year]) {
+                
+                stringURL = [NSString stringWithFormat:@"%@calendar/?s=%@&m=%@",url,[dictOfURLs objectForKey:@"yearID"],monthURL];
+                
+            }
+        }
+    }
+    else
+    {
+        NSArray * arrayOfYears = [self yearFromUrl:url];
+        
+        for (NSDictionary* dictOfSeasons in arrayOfYears) {
+            
+            if ([[dictOfSeasons objectForKey:@"year"] containsString:[self getYearFromDate:date]]) {
+                stringURL = [NSString stringWithFormat:@"http://www.sports.ru%@/%@",url,[dictOfSeasons objectForKey:@"yearID"]];
+            }
+        }
+        
+    }
+    return stringURL;
 }
 
 @end
