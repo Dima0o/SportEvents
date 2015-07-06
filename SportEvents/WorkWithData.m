@@ -125,7 +125,8 @@
     NSString * stringURL = [NSString new];
     
     
-    if ([url containsString:@"tags"]) {
+    if ([url containsString:@"tags"] || [url containsString:@"euro"] || [url containsString:@"international-friendlies"]
+        || [url containsString:@"club-friendlies"]) {
         
         NSDateFormatter * dateFormat = [NSDateFormatter new];
         
