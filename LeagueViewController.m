@@ -11,6 +11,7 @@
 #import "WorkWithData.h"
 #import "MatchsViewController.h"
 
+
 @interface LeagueViewController ()
 
 @property (nonatomic, strong) NSArray * arrayOfData;
@@ -29,9 +30,23 @@
     [super didReceiveMemoryWarning];
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return [self.arrayOfData count];
+}
+
+
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.arrayOfData count];
+    return 0;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    UIView * view = [
+    
+    
+    return header;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

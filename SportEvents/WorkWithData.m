@@ -201,9 +201,7 @@
                 {
                     NSString * value = [NSString new];
                     value = [[element firstTextChild] content];
-                    
                     [arrayOfData addObject:value];
-                    
                 }
             }
             else{

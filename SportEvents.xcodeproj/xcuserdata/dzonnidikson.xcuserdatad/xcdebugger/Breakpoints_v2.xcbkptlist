@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SportEvents/WorkWithData.m"
-            timestampString = "457894722.332971"
+            timestampString = "458067851.608494"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "358"
-            endingLineNumber = "358">
+            startingLineNumber = "356"
+            endingLineNumber = "356">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -72,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SportEvents/WorkWithData.m"
-            timestampString = "457894722.332971"
+            timestampString = "458067851.608494"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "361"
-            endingLineNumber = "361">
+            startingLineNumber = "359"
+            endingLineNumber = "359">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -150,11 +150,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SportEvents/WorkWithData.m"
-            timestampString = "457894722.332971"
+            timestampString = "458067851.608494"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "335"
-            endingLineNumber = "335"
+            startingLineNumber = "333"
+            endingLineNumber = "333"
             landmarkName = "@implementation WorkWithData"
             landmarkType = "3">
          </BreakpointContent>
@@ -166,11 +166,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SportEvents/WorkWithData.m"
-            timestampString = "457894722.332971"
+            timestampString = "458067851.608494"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "336"
-            endingLineNumber = "336"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
             landmarkName = "@implementation WorkWithData"
             landmarkType = "3">
          </BreakpointContent>

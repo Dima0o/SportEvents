@@ -24,6 +24,7 @@
 		2891156C1B45BA07000F0954 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 289115691B45BA07000F0954 /* XPathQuery.m */; };
 		2891156E1B45BA23000F0954 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2891156D1B45BA23000F0954 /* libxml2.dylib */; };
 		289115751B46EA32000F0954 /* WorkWithData.m in Sources */ = {isa = PBXBuildFile; fileRef = 289115741B46EA32000F0954 /* WorkWithData.m */; };
+		28BD0C741B4D9A79009B44DE /* HeaderLeague.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BD0C731B4D9A79009B44DE /* HeaderLeague.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,8 @@
 		2891156D1B45BA23000F0954 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		289115731B46EA32000F0954 /* WorkWithData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkWithData.h; sourceTree = "<group>"; };
 		289115741B46EA32000F0954 /* WorkWithData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkWithData.m; sourceTree = "<group>"; };
+		28BD0C721B4D9A79009B44DE /* HeaderLeague.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderLeague.h; sourceTree = "<group>"; };
+		28BD0C731B4D9A79009B44DE /* HeaderLeague.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderLeague.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +171,8 @@
 				288F4C471B495E0C009E17A6 /* LeagueViewController.m */,
 				288F4C4C1B495E4D009E17A6 /* LeagueCell.h */,
 				288F4C4D1B495E4D009E17A6 /* LeagueCell.m */,
+				28BD0C721B4D9A79009B44DE /* HeaderLeague.h */,
+				28BD0C731B4D9A79009B44DE /* HeaderLeague.m */,
 			);
 			name = League;
 			sourceTree = "<group>";
@@ -328,6 +333,7 @@
 				286D56731B454774001D8905 /* ViewController.m in Sources */,
 				286D566A1B454774001D8905 /* main.m in Sources */,
 				289115621B45B8F5000F0954 /* MatchCell.m in Sources */,
+				28BD0C741B4D9A79009B44DE /* HeaderLeague.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
