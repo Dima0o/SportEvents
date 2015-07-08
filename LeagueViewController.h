@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface LeagueViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
