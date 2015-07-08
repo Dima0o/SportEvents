@@ -10,6 +10,7 @@
 #import "LeagueCell.h"
 #import "WorkWithData.h"
 #import "MatchsViewController.h"
+#import "HeaderLeague.h"
 
 @interface LeagueViewController ()
 
@@ -22,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.tableView registerClass:[HeaderLeague class] forHeaderFooterViewReuseIdentifier:@"Header"];
+    
     [self loadData];
 }
 
@@ -29,9 +32,27 @@
     [super didReceiveMemoryWarning];
 }
 
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 64;
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.arrayOfData count];
+    return 1;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    HeaderLeague * header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"Header"];
+    
+    [header makeHeader];
+    
+    return header;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
