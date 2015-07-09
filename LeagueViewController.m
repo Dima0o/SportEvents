@@ -13,8 +13,12 @@
 #import "HeaderLeague.h"
 
 @interface LeagueViewController ()
+{
+    int count;
+}
 
 @property (nonatomic, strong) NSArray * arrayOfData;
+@property (nonatomic, strong) NSMutableArray * array;
 
 @end
 
@@ -23,7 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView registerClass:[HeaderLeague class] forHeaderFooterViewReuseIdentifier:@"Header"];
+    self.array = [NSMutableArray new];
+
     
     [self loadData];
 }
@@ -33,7 +38,8 @@
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    
+    return [self.arrayOfData count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -43,16 +49,39 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return 0;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     
-    HeaderLeague * header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"Header"];
+    HeaderLeague *header;
+    
+    if (header == nil) {
+        [tableView registerClass:[HeaderLeague class] forHeaderFooterViewReuseIdentifier:@"Header"];
+    }
+    
+    header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"Header"];;
     
     [header makeHeader];
     
+    header.btnLeague.tag = section;
+    
+    header.lblLeague.text = [[self.arrayOfData objectAtIndex:section] objectForKey:@"name"];
+    
+    [header.btnLeague addTarget:self action:@selector(toggleLeagueInSection:) forControlEvents:UIControlEventTouchUpInside];
+    
     return header;
+}
+
+
+
+- (void) toggleLeagueInSection:(UIButton*)sender{
+    
+    int section = sender.tag;
+
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:section]]
+                              withRowAnimation:UITableViewRowAnimationFade];
+    
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -92,6 +121,7 @@
     
     [self presentViewController:match animated:YES completion:nil];
 }
+
 
 
 

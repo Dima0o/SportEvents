@@ -10,6 +10,10 @@
 
 @interface HeaderLeague : UITableViewHeaderFooterView
 
+@property (nonatomic, strong) UILabel * lblLeague;
+@property (nonatomic, strong) UIImageView * imgLeague;
+@property (nonatomic, strong) UIButton * btnLeague;
+
 - (void)makeHeader;
 
 @end
