@@ -19,6 +19,7 @@
 
 @property (nonatomic, strong) NSArray * arrayOfData;
 @property (nonatomic, strong) NSMutableArray * array;
+@property (nonatomic, strong) NSMutableDictionary * dictOfMatches;
 
 @end
 
@@ -28,7 +29,7 @@
     [super viewDidLoad];
     
     self.array = [NSMutableArray new];
-
+    self.dictOfMatches = [NSMutableDictionary new];
     
     [self loadData];
 }
@@ -49,7 +50,13 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    int numberOfRows = 0;
+    
+    NSString * keyOfSection =[ NSString stringWithFormat:@"%i", section ];
+    
+    numberOfRows = [[self.dictOfMatches objectForKey:keyOfSection] count];
+    
+    return numberOfRows;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -60,7 +67,7 @@
         [tableView registerClass:[HeaderLeague class] forHeaderFooterViewReuseIdentifier:@"Header"];
     }
     
-    header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"Header"];;
+    header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"Header"];
     
     [header makeHeader];
     
@@ -77,19 +84,37 @@
 
 - (void) toggleLeagueInSection:(UIButton*)sender{
     
-    int section = sender.tag;
-
-    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:section]]
-                              withRowAnimation:UITableViewRowAnimationFade];
+    WorkWithData * data = [WorkWithData new];
     
+    NSArray * arrayOfMatchesInLeague = [NSArray new];
+    
+    int section = sender.tag;
+    
+    NSString * keyOfSection = [NSString stringWithFormat:@"%i",section];
+    
+    NSString * url = [[self.arrayOfData objectAtIndex:section] objectForKey:@"url"];
+    
+    arrayOfMatchesInLeague = [data loadMatchDataWithURL:url andWithDate:[self getDateToday]];
+    
+    [self.dictOfMatches setObject:arrayOfMatchesInLeague forKey:keyOfSection];
+    
+    [self.tableView reloadData];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LeagueCell * cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
-    cell.lblCountry.text = [[self.arrayOfData objectAtIndex:indexPath.row] objectForKey:@"name"];
+    NSString * keyOfSection =[ NSString stringWithFormat:@"%i", indexPath.section ];
     
+    NSArray * arrayOfMatches = [[NSArray alloc] initWithArray:[self.dictOfMatches objectForKey:keyOfSection]];
+    
+    cell.lblOwnerTeam.text = [[arrayOfMatches objectAtIndex:indexPath.row] objectForKey:@"ownersName"];
+    cell.lblGuestTeam.text = [[arrayOfMatches objectAtIndex:indexPath.row] objectForKey:@"guestsName"];
+    cell.lblScore.text = [[arrayOfMatches objectAtIndex:indexPath.row] objectForKey:@"score"];
+    cell.lblTimeShow.text = [[arrayOfMatches objectAtIndex:indexPath.row] objectForKey:@"startTime"];
+    cell.lblStatus.text = [[arrayOfMatches objectAtIndex:indexPath.row] objectForKey:@"status"];
+
     return cell;
 }
 
@@ -100,17 +125,11 @@
     self.arrayOfData = [data loadLeagueWithDate:[self getDateToday]];
 }
 
--(NSString*) getDateToday
+-(NSDate*) getDateToday
 {
     NSDate * dateToday = [NSDate date];
     
-    NSDateFormatter * dateFormat = [NSDateFormatter new];
-    
-    [dateFormat setDateFormat:@"yyyy/MM/dd"];
-    
-    NSString * date = [dateFormat stringFromDate:dateToday];
-    
-    return date;
+    return dateToday;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

@@ -142,7 +142,13 @@
 
 #pragma mark Load Leagues
 
-- (NSMutableArray*) loadLeagueWithDate:(NSString *) date{
+- (NSMutableArray*) loadLeagueWithDate:(NSDate *) dateToday{
+    
+    NSDateFormatter * dateFormat = [NSDateFormatter new];
+    
+    [dateFormat setDateFormat:@"yyyy/MM/dd"];
+    
+    NSString * date = [dateFormat stringFromDate:dateToday];
     
     NSMutableArray * arrayOfData = [NSMutableArray new];
     
