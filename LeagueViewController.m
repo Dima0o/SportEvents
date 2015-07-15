@@ -154,13 +154,20 @@
     
     [self.arrayOfExpandedSections removeObject:keyOfSection];
     
-    [self.dictOfMatches removeObjectForKey:keyOfSection];
-    
     [self.tableView beginUpdates];
     
+    NSMutableArray * arrayOfMatches = [[NSMutableArray alloc] initWithArray:[self.dictOfMatches objectForKey:keyOfSection]];
+        
+    for (NSDictionary * dict in arrayOfMatches) {
+        
+        int row = (int)[arrayOfMatches indexOfObject:dict];
+        [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:section]] withRowAnimation:UITableViewRowAnimationFade];
+        
+    }
     
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:section]] withRowAnimation:UITableViewRowAnimationFade];
+    [arrayOfMatches removeAllObjects];
     
+    [self.dictOfMatches setObject:arrayOfMatches forKey:keyOfSection];
     
     [self.tableView endUpdates];
 }
