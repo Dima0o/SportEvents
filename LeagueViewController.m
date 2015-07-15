@@ -9,17 +9,14 @@
 #import "LeagueViewController.h"
 #import "LeagueCell.h"
 #import "WorkWithData.h"
-#import "MatchsViewController.h"
 #import "HeaderLeague.h"
 
 @interface LeagueViewController ()
-{
-    int count;
-}
 
 @property (nonatomic, strong) NSArray * arrayOfData;
 @property (nonatomic, strong) NSMutableArray * array;
 @property (nonatomic, strong) NSMutableDictionary * dictOfMatches;
+@property (nonatomic, strong) NSMutableArray * arrayOfExpandedSections;
 
 @end
 
@@ -30,6 +27,7 @@
     
     self.array = [NSMutableArray new];
     self.dictOfMatches = [NSMutableDictionary new];
+    self.arrayOfExpandedSections = [NSMutableArray new];
     
     [self loadData];
 }
@@ -80,27 +78,6 @@
     return header;
 }
 
-
-
-- (void) toggleLeagueInSection:(UIButton*)sender{
-    
-    WorkWithData * data = [WorkWithData new];
-    
-    NSArray * arrayOfMatchesInLeague = [NSArray new];
-    
-    int section = sender.tag;
-    
-    NSString * keyOfSection = [NSString stringWithFormat:@"%i",section];
-    
-    NSString * url = [[self.arrayOfData objectAtIndex:section] objectForKey:@"url"];
-    
-    arrayOfMatchesInLeague = [data loadMatchDataWithURL:url andWithDate:[self getDateToday]];
-    
-    [self.dictOfMatches setObject:arrayOfMatchesInLeague forKey:keyOfSection];
-    
-    [self.tableView reloadData];
-}
-
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LeagueCell * cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
@@ -109,14 +86,29 @@
     
     NSArray * arrayOfMatches = [[NSArray alloc] initWithArray:[self.dictOfMatches objectForKey:keyOfSection]];
     
-    cell.lblOwnerTeam.text = [[arrayOfMatches objectAtIndex:indexPath.row] objectForKey:@"ownersName"];
-    cell.lblGuestTeam.text = [[arrayOfMatches objectAtIndex:indexPath.row] objectForKey:@"guestsName"];
-    cell.lblScore.text = [[arrayOfMatches objectAtIndex:indexPath.row] objectForKey:@"score"];
-    cell.lblTimeShow.text = [[arrayOfMatches objectAtIndex:indexPath.row] objectForKey:@"startTime"];
-    cell.lblStatus.text = [[arrayOfMatches objectAtIndex:indexPath.row] objectForKey:@"status"];
+    
+        
+        cell.alpha = 1;
+        cell.lblOwnerTeam.text = [[arrayOfMatches objectAtIndex:indexPath.row] objectForKey:@"ownersName"];
+        cell.lblGuestTeam.text = [[arrayOfMatches objectAtIndex:indexPath.row] objectForKey:@"guestsName"];
+        cell.lblScore.text = [[arrayOfMatches objectAtIndex:indexPath.row] objectForKey:@"score"];
+        cell.lblTimeShow.text = [[arrayOfMatches objectAtIndex:indexPath.row] objectForKey:@"startTime"];
+        cell.lblStatus.text = [[arrayOfMatches objectAtIndex:indexPath.row] objectForKey:@"status"];
+
+
 
     return cell;
 }
+
+#pragma mark UITableViewDeleagate
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   
+}
+
+
+#pragma LoadMethods
 
 -(void) loadData
 {
@@ -132,16 +124,67 @@
     return dateToday;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    MatchsViewController * match = [self.storyboard instantiateViewControllerWithIdentifier:@"Matches"];
+#pragma mark ExpandCells
+
+
+- (void)expandLeague:(NSString *)keyOfSection section:(int)section {
+    [self.arrayOfExpandedSections addObject:keyOfSection];
     
-    match.urlLeagueStatistic = [[self.arrayOfData objectAtIndex:indexPath.row] objectForKey:@"url"];
+    WorkWithData * data = [WorkWithData new];
     
-    [self presentViewController:match animated:YES completion:nil];
+    NSArray * arrayOfMatchesInLeague = [NSArray new];
+    
+    
+    NSString * url = [[self.arrayOfData objectAtIndex:section] objectForKey:@"url"];
+    
+    arrayOfMatchesInLeague = [data loadMatchDataWithURL:url andWithDate:[self getDateToday]];
+    
+    [self.dictOfMatches setObject:arrayOfMatchesInLeague forKey:keyOfSection];
+    
+    [self.tableView beginUpdates];
+    
+    for (int i = 0; i < [[self.dictOfMatches objectForKey:keyOfSection] count]; i++) {
+        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:i inSection:section]] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    
+    [self.tableView endUpdates];
 }
 
+- (void)closeLeague:(NSString *)keyOfSection section:(int)section {
+    
+    [self.arrayOfExpandedSections removeObject:keyOfSection];
+    
+    [self.dictOfMatches removeObjectForKey:keyOfSection];
+    
+    [self.tableView beginUpdates];
+    
+    
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:section]] withRowAnimation:UITableViewRowAnimationFade];
+    
+    
+    [self.tableView endUpdates];
+}
 
+- (void) toggleLeagueInSection:(UIButton*)sender{
+    
+    int section = sender.tag;
+    
+    NSString * keyOfSection = [NSString stringWithFormat:@"%i",section];
+    
+    if (![self.arrayOfExpandedSections containsObject:keyOfSection]) {
+        
+        [self expandLeague:keyOfSection section:section];
+        
+    }
+    else
+    {
+        
+        [self closeLeague:keyOfSection section:section];
+    }
+    
+   
+    
+}
 
 
 @end

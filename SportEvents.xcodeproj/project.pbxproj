@@ -17,8 +17,6 @@
 		286D56871B454775001D8905 /* SportEventsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 286D56861B454775001D8905 /* SportEventsTests.m */; };
 		288F4C481B495E0C009E17A6 /* LeagueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 288F4C471B495E0C009E17A6 /* LeagueViewController.m */; };
 		288F4C4E1B495E4D009E17A6 /* LeagueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 288F4C4D1B495E4D009E17A6 /* LeagueCell.m */; };
-		2891155C1B45B8A5000F0954 /* MatchsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2891155B1B45B8A5000F0954 /* MatchsViewController.m */; };
-		289115621B45B8F5000F0954 /* MatchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 289115611B45B8F5000F0954 /* MatchCell.m */; };
 		2891156A1B45BA07000F0954 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 289115651B45BA07000F0954 /* TFHpple.m */; };
 		2891156B1B45BA07000F0954 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 289115671B45BA07000F0954 /* TFHppleElement.m */; };
 		2891156C1B45BA07000F0954 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 289115691B45BA07000F0954 /* XPathQuery.m */; };
@@ -57,10 +55,6 @@
 		288F4C471B495E0C009E17A6 /* LeagueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeagueViewController.m; sourceTree = "<group>"; };
 		288F4C4C1B495E4D009E17A6 /* LeagueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeagueCell.h; sourceTree = "<group>"; };
 		288F4C4D1B495E4D009E17A6 /* LeagueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeagueCell.m; sourceTree = "<group>"; };
-		2891155A1B45B8A5000F0954 /* MatchsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchsViewController.h; sourceTree = "<group>"; };
-		2891155B1B45B8A5000F0954 /* MatchsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchsViewController.m; sourceTree = "<group>"; };
-		289115601B45B8F5000F0954 /* MatchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchCell.h; sourceTree = "<group>"; };
-		289115611B45B8F5000F0954 /* MatchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchCell.m; sourceTree = "<group>"; };
 		289115641B45BA07000F0954 /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
 		289115651B45BA07000F0954 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
 		289115661B45BA07000F0954 /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHppleElement.h; sourceTree = "<group>"; };
@@ -180,21 +174,9 @@
 			name = League;
 			sourceTree = "<group>";
 		};
-		288F4C451B495D87009E17A6 /* Match */ = {
-			isa = PBXGroup;
-			children = (
-				2891155A1B45B8A5000F0954 /* MatchsViewController.h */,
-				2891155B1B45B8A5000F0954 /* MatchsViewController.m */,
-				289115601B45B8F5000F0954 /* MatchCell.h */,
-				289115611B45B8F5000F0954 /* MatchCell.m */,
-			);
-			name = Match;
-			sourceTree = "<group>";
-		};
 		289115591B45B869000F0954 /* Matchs Stats */ = {
 			isa = PBXGroup;
 			children = (
-				288F4C451B495D87009E17A6 /* Match */,
 				288F4C441B495D7C009E17A6 /* League */,
 			);
 			name = "Matchs Stats";
@@ -337,14 +319,12 @@
 				2891156B1B45BA07000F0954 /* TFHppleElement.m in Sources */,
 				288F4C481B495E0C009E17A6 /* LeagueViewController.m in Sources */,
 				288F4C4E1B495E4D009E17A6 /* LeagueCell.m in Sources */,
-				2891155C1B45B8A5000F0954 /* MatchsViewController.m in Sources */,
 				286D566D1B454774001D8905 /* AppDelegate.m in Sources */,
 				286D56701B454774001D8905 /* SportEvents.xcdatamodeld in Sources */,
 				2891156C1B45BA07000F0954 /* XPathQuery.m in Sources */,
 				2891156A1B45BA07000F0954 /* TFHpple.m in Sources */,
 				286D56731B454774001D8905 /* ViewController.m in Sources */,
 				286D566A1B454774001D8905 /* main.m in Sources */,
-				289115621B45B8F5000F0954 /* MatchCell.m in Sources */,
 				28BD0C771B4DA30A009B44DE /* HeaderLeague.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
