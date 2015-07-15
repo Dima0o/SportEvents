@@ -188,6 +188,14 @@
                             </tableView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4pq-F5-48q">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lblSportCaption" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3q-Lm-xSC">
+                                        <rect key="frame" x="89" y="35" width="150" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="0.10588236149999999" green="0.61960786580000005" blue="0.98823535439999999" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                         </subviews>
@@ -195,6 +203,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Xq1-R6-dqJ"/>
                     <connections>
+                        <outlet property="headerView" destination="4pq-F5-48q" id="fwz-AC-5Fj"/>
                         <outlet property="tableView" destination="ofl-pm-Ayz" id="D0k-Ub-rZX"/>
                     </connections>
                 </viewController>

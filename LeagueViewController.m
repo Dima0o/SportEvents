@@ -14,9 +14,9 @@
 @interface LeagueViewController ()
 
 @property (nonatomic, strong) NSArray * arrayOfData;
-@property (nonatomic, strong) NSMutableArray * array;
 @property (nonatomic, strong) NSMutableDictionary * dictOfMatches;
 @property (nonatomic, strong) NSMutableArray * arrayOfExpandedSections;
+@property (strong, nonatomic) IBOutlet UIView *headerView;
 
 @end
 
@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.array = [NSMutableArray new];
+    [self makeHeader];
     self.dictOfMatches = [NSMutableDictionary new];
     self.arrayOfExpandedSections = [NSMutableArray new];
     
@@ -35,6 +35,16 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
+- (void) makeHeader{
+    
+    self.headerView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.headerView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
+    self.headerView.layer.shadowOpacity = 0.8f;
+}
+
+
+#pragma mark UITableDataSource
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
@@ -50,9 +60,9 @@
 {
     int numberOfRows = 0;
     
-    NSString * keyOfSection =[ NSString stringWithFormat:@"%i", section ];
+    NSString * keyOfSection =[ NSString stringWithFormat:@"%i", (int)section ];
     
-    numberOfRows = [[self.dictOfMatches objectForKey:keyOfSection] count];
+    numberOfRows = (int)[[self.dictOfMatches objectForKey:keyOfSection] count];
     
     return numberOfRows;
 }
@@ -71,6 +81,18 @@
     
     header.btnLeague.tag = section;
     
+    NSString * url = [[self.arrayOfData objectAtIndex:section] objectForKey:@"url"];
+    
+    NSString * imageName;
+    
+    NSRange replaceRange = [url rangeOfString:@"/stat/football/"];
+    
+    if (replaceRange.location != NSNotFound){
+       imageName = [url stringByReplacingCharactersInRange:replaceRange withString:@""];
+    }
+    
+    header.imgLeague.image = [UIImage imageNamed:imageName];
+    
     header.lblLeague.text = [[self.arrayOfData objectAtIndex:section] objectForKey:@"name"];
     
     [header.btnLeague addTarget:self action:@selector(toggleLeagueInSection:) forControlEvents:UIControlEventTouchUpInside];
@@ -82,12 +104,11 @@
 {
     LeagueCell * cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
-    NSString * keyOfSection =[ NSString stringWithFormat:@"%i", indexPath.section ];
+    NSString * keyOfSection =[ NSString stringWithFormat:@"%i", (int)indexPath.section ];
     
     NSArray * arrayOfMatches = [[NSArray alloc] initWithArray:[self.dictOfMatches objectForKey:keyOfSection]];
     
-    
-        
+
         cell.alpha = 1;
         cell.lblOwnerTeam.text = [[arrayOfMatches objectAtIndex:indexPath.row] objectForKey:@"ownersName"];
         cell.lblGuestTeam.text = [[arrayOfMatches objectAtIndex:indexPath.row] objectForKey:@"guestsName"];
@@ -174,7 +195,7 @@
 
 - (void) toggleLeagueInSection:(UIButton*)sender{
     
-    int section = sender.tag;
+    int section = (int)sender.tag;
     
     NSString * keyOfSection = [NSString stringWithFormat:@"%i",section];
     

@@ -24,6 +24,16 @@
 		289115751B46EA32000F0954 /* WorkWithData.m in Sources */ = {isa = PBXBuildFile; fileRef = 289115741B46EA32000F0954 /* WorkWithData.m */; };
 		28BD0C771B4DA30A009B44DE /* HeaderLeague.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BD0C761B4DA30A009B44DE /* HeaderLeague.m */; };
 		28BD0C7A1B4DAB43009B44DE /* concacaf.png in Resources */ = {isa = PBXBuildFile; fileRef = 28BD0C791B4DAB43009B44DE /* concacaf.png */; };
+		28CF43ED1B56BC9300E0AE93 /* ucl.png in Resources */ = {isa = PBXBuildFile; fileRef = 28CF43EC1B56BC9300E0AE93 /* ucl.png */; };
+		28CF43F11B56BD4F00E0AE93 /* brazil2.png in Resources */ = {isa = PBXBuildFile; fileRef = 28CF43EE1B56BD4F00E0AE93 /* brazil2.png */; };
+		28CF43F21B56BD4F00E0AE93 /* japan.png in Resources */ = {isa = PBXBuildFile; fileRef = 28CF43EF1B56BD4F00E0AE93 /* japan.png */; };
+		28CF43F31B56BD4F00E0AE93 /* libertad.png in Resources */ = {isa = PBXBuildFile; fileRef = 28CF43F01B56BD4F00E0AE93 /* libertad.png */; };
+		28CF43F81B56C2B800E0AE93 /* china.png in Resources */ = {isa = PBXBuildFile; fileRef = 28CF43F41B56C2B800E0AE93 /* china.png */; };
+		28CF43F91B56C2B800E0AE93 /* egypt.png in Resources */ = {isa = PBXBuildFile; fileRef = 28CF43F51B56C2B800E0AE93 /* egypt.png */; };
+		28CF43FB1B56C2B800E0AE93 /* thailand.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28CF43F71B56C2B800E0AE93 /* thailand.jpg */; };
+		28CF43FF1B56C44500E0AE93 /* 1div.png in Resources */ = {isa = PBXBuildFile; fileRef = 28CF43FE1B56C44500E0AE93 /* 1div.png */; };
+		28CF44011B56C8A100E0AE93 /* ruscup.png in Resources */ = {isa = PBXBuildFile; fileRef = 28CF44001B56C8A100E0AE93 /* ruscup.png */; };
+		28CF44031B56C95100E0AE93 /* peru.png in Resources */ = {isa = PBXBuildFile; fileRef = 28CF44021B56C95100E0AE93 /* peru.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +77,16 @@
 		28BD0C751B4DA30A009B44DE /* HeaderLeague.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderLeague.h; sourceTree = "<group>"; };
 		28BD0C761B4DA30A009B44DE /* HeaderLeague.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderLeague.m; sourceTree = "<group>"; };
 		28BD0C791B4DAB43009B44DE /* concacaf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = concacaf.png; sourceTree = "<group>"; };
+		28CF43EC1B56BC9300E0AE93 /* ucl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ucl.png; sourceTree = "<group>"; };
+		28CF43EE1B56BD4F00E0AE93 /* brazil2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brazil2.png; sourceTree = "<group>"; };
+		28CF43EF1B56BD4F00E0AE93 /* japan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = japan.png; sourceTree = "<group>"; };
+		28CF43F01B56BD4F00E0AE93 /* libertad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = libertad.png; sourceTree = "<group>"; };
+		28CF43F41B56C2B800E0AE93 /* china.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = china.png; sourceTree = "<group>"; };
+		28CF43F51B56C2B800E0AE93 /* egypt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = egypt.png; sourceTree = "<group>"; };
+		28CF43F71B56C2B800E0AE93 /* thailand.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thailand.jpg; sourceTree = "<group>"; };
+		28CF43FE1B56C44500E0AE93 /* 1div.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1div.png; sourceTree = "<group>"; };
+		28CF44001B56C8A100E0AE93 /* ruscup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ruscup.png; sourceTree = "<group>"; };
+		28CF44021B56C95100E0AE93 /* peru.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = peru.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +229,16 @@
 			isa = PBXGroup;
 			children = (
 				28BD0C791B4DAB43009B44DE /* concacaf.png */,
+				28CF43EC1B56BC9300E0AE93 /* ucl.png */,
+				28CF43EE1B56BD4F00E0AE93 /* brazil2.png */,
+				28CF43EF1B56BD4F00E0AE93 /* japan.png */,
+				28CF43F01B56BD4F00E0AE93 /* libertad.png */,
+				28CF43F41B56C2B800E0AE93 /* china.png */,
+				28CF43F51B56C2B800E0AE93 /* egypt.png */,
+				28CF43F71B56C2B800E0AE93 /* thailand.jpg */,
+				28CF43FE1B56C44500E0AE93 /* 1div.png */,
+				28CF44001B56C8A100E0AE93 /* ruscup.png */,
+				28CF44021B56C95100E0AE93 /* peru.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -294,10 +324,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28CF43F81B56C2B800E0AE93 /* china.png in Resources */,
 				286D56761B454774001D8905 /* Main.storyboard in Resources */,
+				28CF44011B56C8A100E0AE93 /* ruscup.png in Resources */,
 				28BD0C7A1B4DAB43009B44DE /* concacaf.png in Resources */,
+				28CF43FB1B56C2B800E0AE93 /* thailand.jpg in Resources */,
+				28CF43F21B56BD4F00E0AE93 /* japan.png in Resources */,
+				28CF43ED1B56BC9300E0AE93 /* ucl.png in Resources */,
+				28CF43F11B56BD4F00E0AE93 /* brazil2.png in Resources */,
 				286D567B1B454774001D8905 /* LaunchScreen.xib in Resources */,
+				28CF44031B56C95100E0AE93 /* peru.png in Resources */,
+				28CF43F91B56C2B800E0AE93 /* egypt.png in Resources */,
+				28CF43F31B56BD4F00E0AE93 /* libertad.png in Resources */,
 				286D56781B454774001D8905 /* Images.xcassets in Resources */,
+				28CF43FF1B56C44500E0AE93 /* 1div.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
