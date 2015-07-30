@@ -34,6 +34,7 @@
 		28CF43FF1B56C44500E0AE93 /* 1div.png in Resources */ = {isa = PBXBuildFile; fileRef = 28CF43FE1B56C44500E0AE93 /* 1div.png */; };
 		28CF44011B56C8A100E0AE93 /* ruscup.png in Resources */ = {isa = PBXBuildFile; fileRef = 28CF44001B56C8A100E0AE93 /* ruscup.png */; };
 		28CF44031B56C95100E0AE93 /* peru.png in Resources */ = {isa = PBXBuildFile; fileRef = 28CF44021B56C95100E0AE93 /* peru.png */; };
+		28CF44061B56D2B100E0AE93 /* Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CF44051B56D2B100E0AE93 /* Data.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,8 @@
 		28CF43FE1B56C44500E0AE93 /* 1div.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1div.png; sourceTree = "<group>"; };
 		28CF44001B56C8A100E0AE93 /* ruscup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ruscup.png; sourceTree = "<group>"; };
 		28CF44021B56C95100E0AE93 /* peru.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = peru.png; sourceTree = "<group>"; };
+		28CF44041B56D2B100E0AE93 /* Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
+		28CF44051B56D2B100E0AE93 /* Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Data.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +136,7 @@
 				28BD0C781B4DAA9D009B44DE /* images */,
 				288F4C221B4955BE009E17A6 /* TestViews */,
 				289115721B46E939000F0954 /* Data */,
-				289115631B45B9D2000F0954 /* hpple */,
+				289115631B45B9D2000F0954 /* HTML Parser */,
 				289115591B45B869000F0954 /* Matchs Stats */,
 				286D566B1B454774001D8905 /* AppDelegate.h */,
 				286D566C1B454774001D8905 /* AppDelegate.m */,
@@ -203,7 +206,7 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		289115631B45B9D2000F0954 /* hpple */ = {
+		289115631B45B9D2000F0954 /* HTML Parser */ = {
 			isa = PBXGroup;
 			children = (
 				289115641B45BA07000F0954 /* TFHpple.h */,
@@ -213,7 +216,7 @@
 				289115681B45BA07000F0954 /* XPathQuery.h */,
 				289115691B45BA07000F0954 /* XPathQuery.m */,
 			);
-			name = hpple;
+			name = "HTML Parser";
 			sourceTree = "<group>";
 		};
 		289115721B46E939000F0954 /* Data */ = {
@@ -221,6 +224,8 @@
 			children = (
 				289115731B46EA32000F0954 /* WorkWithData.h */,
 				289115741B46EA32000F0954 /* WorkWithData.m */,
+				28CF44041B56D2B100E0AE93 /* Data.h */,
+				28CF44051B56D2B100E0AE93 /* Data.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -366,6 +371,7 @@
 				286D56731B454774001D8905 /* ViewController.m in Sources */,
 				286D566A1B454774001D8905 /* main.m in Sources */,
 				28BD0C771B4DA30A009B44DE /* HeaderLeague.m in Sources */,
+				28CF44061B56D2B100E0AE93 /* Data.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,7 @@
 #import "LeagueCell.h"
 #import "WorkWithData.h"
 #import "HeaderLeague.h"
+#import "Data.h"
 
 @interface LeagueViewController ()
 
@@ -69,6 +70,10 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     
+    Data * data = [Data new];
+    
+    [data loadLeaguesKeys];
+    
     HeaderLeague *header;
     
     if (header == nil) {
@@ -81,15 +86,7 @@
     
     header.btnLeague.tag = section;
     
-    NSString * url = [[self.arrayOfData objectAtIndex:section] objectForKey:@"url"];
-    
     NSString * imageName;
-    
-    NSRange replaceRange = [url rangeOfString:@"/stat/football/"];
-    
-    if (replaceRange.location != NSNotFound){
-       imageName = [url stringByReplacingCharactersInRange:replaceRange withString:@""];
-    }
     
     header.imgLeague.image = [UIImage imageNamed:imageName];
     
